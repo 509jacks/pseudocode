@@ -1,14 +1,30 @@
 let _123456 = 0
 let rps = 0
 input.onButtonPressed(Button.A, function () {
-    music.playMelody("- - - - - - - - ", 330)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
+    for (let index = 0; index < 5; index++) {
+        music.playMelody("C5 A B G A F G E ", 330)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
+            `)
+        basic.showLeds(`
+            . . . . .
+            . # # # .
+            . # # # .
+            . # # # .
+            . . . . .
+            `)
+        basic.showLeds(`
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            `)
+    }
 })
 input.onButtonPressed(Button.AB, function () {
     rps = randint(1, 3)
@@ -21,7 +37,13 @@ input.onButtonPressed(Button.AB, function () {
     }
 })
 input.onButtonPressed(Button.B, function () {
-    music.playMelody("- - - - - - - - ", 120)
+    for (let index = 0; index < 5; index++) {
+        music.playMelody("G B A G C5 B A B ", 340)
+        basic.showIcon(IconNames.Cow)
+        basic.pause(1)
+        basic.clearScreen()
+        basic.pause(1)
+    }
 })
 input.onGesture(Gesture.Shake, function () {
     music.playMelody("G F G F - A - - ", 330)
@@ -42,16 +64,19 @@ input.onGesture(Gesture.Shake, function () {
     }
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
-    radio.sendNumber(5)
-    basic.showLeds(`
-        # . . . #
-        . # . # .
-        . . . . .
-        # . . . #
-        . # # # .
-        `)
-})
-basic.forever(function () {
-    music.playMelody("G F G F - A - - ", 330)
-    music.playMelody("G F G A - F E D ", 330)
+    let ymn = 0
+    music.playMelody("B A G A G F A C5 ", 340)
+    if (ymn == 1) {
+        basic.showIcon(IconNames.Yes)
+    } else if (ymn == 2) {
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            . . # # .
+            . . . . .
+            . . # . .
+            `)
+    } else {
+        basic.showIcon(IconNames.No)
+    }
 })
